@@ -1,0 +1,266 @@
+<section class="breadcrumb-container">
+	<div class="row align-items-start">
+		<div class="col-sm-6">
+			<h2>Modificaciones en linea</h2>
+			<h4>Inicio > Bandera de entrada > Radicar Modificacion</h4>
+		</div>
+	</div>
+</section>
+<section class="obligacion-info acc-info">		
+	
+
+		<mat-accordion >
+			<mat-expansion-panel #expPanel>
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						<h3 class="heading">Formulario de consulta de obligaciones por titular <span>(El campo marcado con "<i>*</i>" es obligatorio)</span></h3>
+					</mat-panel-title>
+					<mat-panel-description style="text-align: right !important;">
+						{{expPanel.expanded? 'Contraer' : 'Expandir'}}
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+					
+				<form novalidate [formGroup]="form" (ngSubmit)="addUser()">						
+					<div class="show-obligacion form-element">
+						<div class="formulario-field form-element">
+							<div class="row">
+								<div class="col-md-3 col-sm-4 col-12">
+									<div class="form-group">
+											<label for="tipoIdentificacion">Tipo Identification <span>*</span></label>
+											<select class="form-control" formControlName="tipoIdentificacion">
+												<option>Saldada</option>
+												<option>Saldada</option>
+												<option>Saldada</option>
+												<option>Saldada</option>
+											</select>
+									</div>
+									<div *ngIf="form.get('tipoIdentificacion').touched && form.get('tipoIdentificacion').invalid" class="alert alert-danger">
+										<div *ngIf="form.get('tipoIdentificacion').hasError('required')">
+											Tipo identificacion es requerido
+										</div>	
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-4 col-12">
+									<div class="form-group">
+										<label for="noIdentificacion">Numero de Identificacion <span>*</span></label>
+										<input type="text" class="form-control" formControlName="noIdentificacion" />	
+									</div>
+									<div *ngIf="form.get('noIdentificacion').touched && form.get('noIdentificacion').invalid" class="alert alert-danger">
+										<div *ngIf="form.get('noIdentificacion').hasError('required')">
+											Numero de Identificacion es requerido
+										</div>	
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-4 col-12">
+									<div class="form-group">
+										<label for="tipoCartera">Tipo de Cartera</label>					
+										<input type="text" class="form-control" formControlName="tipoCartera" />								
+									</div>							
+								</div>							
+								<div class="col-md-3 col-sm-4 col-12">
+									<div class="form-group">
+										<label for="noObligacion">Numero de obligacion</label>
+										<input type="text" class="form-control" formControlName="noObligacion" />	
+									</div>								
+								</div>
+								<div class="col-md-3 col-sm-4 col-12">
+									<div class="form-group">
+										<label for="noCaso">Numero de Caso</label>
+										<input type="text" class="form-control" formControlName="noCaso" />
+									</div>									
+								</div>
+								<div class="col-md-3 col-sm-4 col-12">
+									<div class="form-group">
+										<label for="justificacion">Justificacion <span>*</span></label>
+										<select class="form-control" formControlName="justificacion">
+											<option>Saldada</option>
+											<option>Saldada</option>
+											<option>Saldada</option>
+											<option>Saldada</option>
+										</select>
+									</div>
+									<div *ngIf="form.get('justificacion').touched && form.get('justificacion').invalid" class="alert alert-danger">
+										<div *ngIf="form.get('justificacion').hasError('required')">
+											Justificacion es requerido
+										</div>	
+									</div>										
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-12">
+									<div class="btn-container">
+										<button type="submit" name="enviar" class="btn btn-primary pull-right" [disabled]="form.invalid">Enviar</button>      
+									</div>
+								</div>
+							</div>	
+						</div>									
+					</div>								
+				</form>
+				
+			</mat-expansion-panel>
+		</mat-accordion>
+	</section>		
+	<br />
+	<div *ngIf="renderTable">
+		<section class="select-action">
+				<div class="page-card">
+						<div class="selecion-group">
+								<h4 class="heading">Consulta de obligaciones por titular</h4>
+							</div>
+							<div class="acc-info">
+								<div class="row">
+									<div class="col-md-3 col-sm-4 col-12">
+										<h5>Nombres apellidos del titular</h5>
+										<p>Segura Jimenez German Andres</p>
+									</div>
+									<div class="col-md-3 col-sm-4 col-12">
+										<h5>Tipo de Indentification</h5>
+										<p>CC</p>
+									</div>
+									<div class="col-md-3 col-sm-4 col-12">
+										<h5>Numero de Identification</h5>
+										<p>80165655</p>
+									</div>
+									<div class="col-md-3 col-sm-4 col-12">
+										<h5>Justification</h5>
+										<p>Actualizacion en linea</p>
+									</div>
+								</div>
+							</div>
+				</div>
+		</section>
+		<br />
+		<section class="obligacion-status">
+				<div class="page-card">
+					<div class="state-btn">
+						<ul>
+							<li class="active">Activas</li>
+							<li>Inactivas</li>
+						</ul>
+					</div>
+					<div class="table-filter">
+						<div class="row">
+						<div class="col-md-4">
+							<ul>
+								<li><h4 class="heading">Obligacion</h4></li>
+								<li>
+									<div class="form-inline" >
+										<div class="form-group">
+											<label>Ver Cuenta Por</label>
+											<select class="form-control" formControlName="verCuentaPor">
+													selected	
+													<option selected>Todas</option>
+													<option >Habilitadas</option>
+													<option>Raclamos</option>
+													<option>Modificaciones</option>
+													<option>Frenados</option>
+													<option>Bloqueados</option>
+													
+											</select>	
+										</div>	
+									</div>	
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-8">
+							<ul class="right-section">
+								<li>
+									<label>Ir a la pagina</label>
+									<select>
+										<option>50</option>
+										<option>100</option>
+										<option>150</option>
+									</select>
+								</li>
+								<li class="pagination">
+									<label>Pagina</label>
+									<ul>
+										<li><img src="/src/app/images/left-arrow.png"></li>
+										<li class="active">1</li>
+										<li>2</li>
+										<li>3</li>
+										<li>...</li>
+										<li>50</li>
+										<li><img src="/src/app/images/right-arrow.png"></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						</div>
+					</div>
+					<div class="obligacion-result">
+						<div class="row">
+							<div class="col-sm-4 col-12">
+									<h3>AHO 03136615946000000 Bancolumbia <span class="raclamos-clr">R</span></h3>
+									<div class="obligacion-notify">
+										<img src="/src/app/images/account_profileicon.png" />
+									</div>
+							</div>
+							<div class="col-sm-4 col-12">
+								<h3>AHO 03136615946000000 Bancolumbia<span class="modify-clr">V</span></h3>
+							</div>
+							<div class="col-sm-4 col-12">
+									<h3>TDS 03136615946000000 Bancolumbia<span class="raclamos-clr">R</span></h3>
+									<div class="obligacion-notify">
+										<img src="/src/app/images/account_profileicon.png" />
+									</div>
+							</div>
+							<div class="col-sm-4 col-12">
+								<h3>AHO 03136615946000000 Bancolumbia<span class="modify-clr">V</span></h3>
+							</div>
+							<div class="col-sm-4 col-12">
+									<h3>AHO 03136615946000000 Bancolumbia<span class="bloqueados-clr">B</span></h3>
+									<div class="obligacion-notify">
+										<img src="/src/app/images/account_profileicon.png" />
+										<span class="raclamos-clr">N</span>
+									</div>
+							</div>
+							<div class="col-sm-4 col-12">
+								<a href="javascript:void(0)" data-toggle="modal" data-target="#alert-modal"><h3>AHO 03136615946000000 Bancolumbia<span class="frenados-clr">F</span></h3></a>
+							</div>
+							<div class="col-sm-4 col-12">
+								<a href="javascript:void(0)" data-toggle="modal" data-target="#alert-modal"><h3>AHO 03136615946000000 Bancolumbia<span class="frenados-clr">F</span></h3></a>
+							</div>
+							<div class="col-sm-4 col-12">
+									<h3>TDS 03136615946000000 Bancolumbia<span class="raclamos-clr">R</span></h3>
+									<div class="obligacion-notify">
+										<img src="/src/app/images/account_profileicon.png" />
+									</div>
+							</div>
+							<div class="col-sm-4 col-12">
+								<a href="javascript:void(0)" data-toggle="modal" data-target="#alert-modal"><h3>AHO 03136615946000000 Bancolumbia<span class="habilitadas-clr"><img src="/src/app/images/obligationlist_icon.png"></span></h3></a>
+							</div>
+							<div class="col-sm-4 col-12">
+									<h3>AHO 03136615946000000 Bancolumbia<span class="bloqueados-clr">B</span></h3>
+									<div class="obligacion-notify">
+										<span class="raclamos-clr">N</span>
+									</div>
+							</div>
+							<div class="col-sm-4 col-12">
+								<a href="javascript:void(0)" data-toggle="modal" data-target="#alert-modal"><h3>AHO 03136615946000000 Bancolumbia<span class="habilitadas-clr"><img src="/src/app/images/obligationlist_icon.png"></span></h3></a>
+							</div>
+							<div class="col-sm-4 col-12">
+									<h3>AHO 03136615946000000 Bancolumbia<span class="bloqueados-clr">B</span></h3>
+									<div class="obligacion-notify">
+										<span class="raclamos-clr">N</span>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>									
+	</div>
+		
+		
+							
+		
+		
+
+		
+		
+	
+		
+		
+  
+  
+  
